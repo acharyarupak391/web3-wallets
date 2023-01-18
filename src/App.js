@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import styled from 'styled-components';
 
-function App() {
+import NavBar from './components/NavBar';
+import { flexRowNoWrap } from './theme/styles';
+import { Z_INDEX } from './theme/zIndex';
+
+const HeaderWrapper = styled.div`
+  ${flexRowNoWrap};
+  background-color: lightcoral;
+  border-bottom: darkorchid;
+  width: 100%;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  z-index: ${Z_INDEX.dropdown};
+`;
+
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <HeaderWrapper>
+      <NavBar />
+    </HeaderWrapper>
   );
 }
-
-export default App;
