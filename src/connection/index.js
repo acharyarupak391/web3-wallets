@@ -33,7 +33,7 @@ function onMetaMaskError(error) {
 }
 
 const [web3Network, web3NetworkHooks] = initializeConnector(
-  (actions) => new Network(actions, RPC_PROVIDERS)
+  (actions) => new Network({ actions, urlMap: RPC_PROVIDERS })
 );
 
 export const networkConnection = {
@@ -73,11 +73,13 @@ const [web3WalletConnect, web3WalletConnectHooks] = initializeConnector(
       }),
       {}
     );
+
     return new WalletConnect({
       actions,
       options: {
         rpc: RPC_URLS_WITHOUT_FALLBACKS,
         qrcode: true,
+        bridge: "https://bridge.walletconnect.org", // Required
       },
       onError,
     });
@@ -102,8 +104,11 @@ const [web3CoinbaseWallet, web3CoinbaseWalletHooks] = initializeConnector(
       onError,
     })
 );
+
 export const coinbaseWalletConnection = {
   connector: web3CoinbaseWallet,
   hooks: web3CoinbaseWalletHooks,
   type: ConnectionType.COINBASE_WALLET,
 };
+
+console.log({ walletConnectConnection });

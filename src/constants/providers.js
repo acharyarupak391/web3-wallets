@@ -12,7 +12,6 @@ import { RPC_URLS } from './networks';
 
 class AppJsonRpcProvider extends StaticJsonRpcProvider {
   _blockCache = new Map();
-
   get blockCache() {
     // If the blockCache has not yet been initialized this block, do so by
     // setting a listener to clear it on the next block.
@@ -63,6 +62,34 @@ class AppJsonRpcProvider extends StaticJsonRpcProvider {
  * These are the only JsonRpcProviders used directly by the interface.
  */
 export const RPC_PROVIDERS = {
+  [SupportedChainId.MAINNET]: new AppJsonRpcProvider(SupportedChainId.MAINNET),
+  [SupportedChainId.RINKEBY]: new AppJsonRpcProvider(SupportedChainId.RINKEBY),
+  [SupportedChainId.ROPSTEN]: new AppJsonRpcProvider(SupportedChainId.ROPSTEN),
+  [SupportedChainId.GOERLI]: new AppJsonRpcProvider(SupportedChainId.GOERLI),
+  [SupportedChainId.KOVAN]: new AppJsonRpcProvider(SupportedChainId.KOVAN),
+  [SupportedChainId.OPTIMISM]: new AppJsonRpcProvider(
+    SupportedChainId.OPTIMISM
+  ),
+  [SupportedChainId.OPTIMISM_GOERLI]: new AppJsonRpcProvider(
+    SupportedChainId.OPTIMISM_GOERLI
+  ),
+  [SupportedChainId.ARBITRUM_ONE]: new AppJsonRpcProvider(
+    SupportedChainId.ARBITRUM_ONE
+  ),
+  [SupportedChainId.ARBITRUM_RINKEBY]: new AppJsonRpcProvider(
+    SupportedChainId.ARBITRUM_RINKEBY
+  ),
+  [SupportedChainId.POLYGON]: new AppJsonRpcProvider(SupportedChainId.POLYGON),
+  [SupportedChainId.POLYGON_MUMBAI]: new AppJsonRpcProvider(
+    SupportedChainId.POLYGON_MUMBAI
+  ),
+  [SupportedChainId.CELO]: new AppJsonRpcProvider(SupportedChainId.CELO),
+  [SupportedChainId.CELO_ALFAJORES]: new AppJsonRpcProvider(
+    SupportedChainId.CELO_ALFAJORES
+  ),
+};
+
+export const RPC_PROVIDERS_OBJECT = {
   [SupportedChainId.MAINNET]: RPC_URLS[SupportedChainId.MAINNET],
   [SupportedChainId.RINKEBY]: RPC_URLS[SupportedChainId.RINKEBY],
   [SupportedChainId.ROPSTEN]: RPC_URLS[SupportedChainId.ROPSTEN],

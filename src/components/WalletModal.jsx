@@ -82,11 +82,11 @@ export const WalletModal = ({ open, setOpen }) => {
       null;
 
     return (
-      <>
+      <WalletList>
         {injectedOption}
         {coinbaseWalletOption}
         {walletConnectionOption}
-      </>
+      </WalletList>
     );
   }
 
@@ -131,10 +131,21 @@ const Content = styled.div`
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
 
-  width: 500px;
-  height: 400px;
+  min-width: 500px;
+  min-height: 400px;
   padding: 10px;
   border-radius: 6px;
   background-color: white;
   z-index: 2;
+
+  @media (max-width: 768px) {
+    min-width: 300px;
+    min-height: 400px;
+  }
+`;
+
+const WalletList = styled.div`
+  & > *:not(:first-child) {
+    margin-top: 16px;
+  }
 `;
